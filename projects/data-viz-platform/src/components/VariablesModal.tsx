@@ -1,8 +1,6 @@
-import * as React from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, Search, Sparkles, RotateCcw, Plus, Check } from 'lucide-react'
 import { Button } from './ui/Button'
-import { useState } from 'react'
 
 interface Variable {
     name: string
@@ -50,7 +48,6 @@ interface VariablesModalProps {
 }
 
 export function VariablesModal({ isOpen, onClose }: VariablesModalProps) {
-    const [search, setSearch] = useState('')
 
     return (
         <AnimatePresence>
