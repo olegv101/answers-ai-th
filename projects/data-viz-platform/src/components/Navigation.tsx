@@ -5,7 +5,7 @@ export function Navigation() {
   return (
     <nav className="flex w-full items-center justify-between px-4">
       <div className="flex space-x-4">
-        <Button variant="selected">
+        <Button variant="standard">
           Charging Stations
         </Button>
         <Button>

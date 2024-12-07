@@ -41,7 +41,6 @@ export function Graph() {
   return (
     <div className="rounded-lg border border-[#444444] bg-[#222324] p-4">
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-lg font-semibold text-white">Graphs</h3>
         <Select defaultValue="unsatisfied">
           <SelectTrigger className="w-[237px]">
             <SelectValue placeholder="Select metric" />
