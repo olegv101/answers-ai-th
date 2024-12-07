@@ -92,7 +92,7 @@ export function Graph() {
               dataKey="value"
               stroke="#C9FF3B"
               strokeWidth={2}
-              dot={false}
+            //   dot={false}
               activeDot={{ r: 6, fill: '#C9FF3B' }}
               isAnimationActive={false}
               dot={(props: any) => {
