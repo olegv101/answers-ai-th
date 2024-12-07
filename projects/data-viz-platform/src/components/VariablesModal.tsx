@@ -99,14 +99,14 @@ export function VariablesModal({ isOpen, onClose }: VariablesModalProps) {
                                 <div className="space-y-6 max-h-[calc(100vh-280px)] overflow-y-auto pr-4">
                                     {categories.map((category) => (
                                         <div key={category.name} className="space-y-3">
-                                            <h3 className="text-[16px] text-sm font-medium px-2">{category.name}</h3>
+                                            <h3 className="text-[16px] text-sm font-medium px-2 flex justify-start">{category.name}</h3>
                                             <div className="flex flex-wrap gap-2 p-3 rounded-xl">
                                                 {category.variables.map((variable) => (
                                                     <Button
                                                         key={variable.name}
                                                         variant="standard"
                                                         className={`${variable.active
-                                                                ? 'bg-[#3f4d27] text-[#C9FF3B] flex flex-row items-center px-2 rounded-full'
+                                                                ? 'bg-[#282E16] border border-[#C9FF3B] text-[#C9FF3B] flex flex-row items-center px-4 rounded-full'
                                                                 : 'flex flex-row items-center px-2'
                                                             }`}
                                                     >
