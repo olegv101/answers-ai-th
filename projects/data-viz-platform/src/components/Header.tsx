@@ -1,4 +1,4 @@
-import { History, Share2, Zap } from 'lucide-react'
+import { History, Share, Zap } from 'lucide-react'
 import { Button } from './ui/Button'
 import { useState } from 'react'
 import { VariablesModal } from './VariablesModal'
@@ -22,7 +22,7 @@ export function Header() {
                         Edit Variables
                     </Button>
                     <Button variant="standard" className="px-2">
-                        <Share2 className="h-5 w-5" />
+                        <Share className="h-5 w-5" />
                     </Button>
                 </div>
             </div>
