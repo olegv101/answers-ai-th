@@ -20,7 +20,9 @@ function App() {
               <Header />
               <ScenarioResults />
             </div>
-            <DashboardMetrics />
+            <div className="mx-4 mb-4">
+              <DashboardMetrics />
+            </div>
           </div>
         </div>
       </div>
