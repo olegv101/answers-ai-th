@@ -51,17 +51,30 @@ A mock data visualization platform built with React, TypeScript, and Vite, featu
 ```
 data-viz-platform/
 ├─ src/
-│  ├─ components/    # UI components
-│  ├─ features/      # Feature logic
-│  ├─ hooks/         # Custom hooks
-│  ├─ pages/         # Page components
-│  ├─ state/         # State management
-│  ├─ styles/        # Global styles
-│  ├─ utils/         # Utilities
+│  ├─ components/
+│  │  ├─ ui/          # Reusable UI components (Button, etc.)
+│  │  ├─ Graph.tsx    # Chart visualization
+│  │  ├─ Header.tsx   # Main header component
+│  │  ├─ KPICards.tsx # Performance indicators
+│  │  ├─ Navigation.tsx # Top navigation
+│  │  ├─ ScenarioResults.tsx # Results display
+│  │  └─ Sidebar.tsx  # Main navigation sidebar
+│  ├─ pages/
+│  │  ├─ SignIn.tsx   # Authentication pages
+│  │  └─ SignUp.tsx
+│  ├─ context/
+│  │  └─ AuthContext.tsx # Authentication context
+│  ├─ styles/
+│  │  ├─ App.css
+│  │  └─ index.css
 │  ├─ App.tsx        # Root component
 │  └─ main.tsx       # Entry point
 ├─ public/
-└─ [config files]
+└─ config/
+   ├─ tsconfig.json
+   ├─ tsconfig.app.json
+   ├─ tsconfig.node.json
+   └─ vite.config.ts
 ```
 
 ## 🤔 Technical Decisions & Trade-offs
