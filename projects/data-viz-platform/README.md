@@ -99,3 +99,4 @@ data-viz-platform/
 | State & Interactions   | ~1 hour     |
 | Styling & Animations   | ~1 hour     |
 | Review & Documentation | ~1 hours    |
+| A little refactoring   | ~1 hours    |
