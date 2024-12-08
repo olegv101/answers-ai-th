@@ -1,6 +1,6 @@
 import {
-  Line,
-  LineChart,
+  Area,
+  AreaChart,
   ResponsiveContainer,
   XAxis,
   YAxis,
@@ -86,10 +86,16 @@ export function Graph() {
       </div>
       <div className="h-[449px] w-full">
         <ResponsiveContainer width="100%" height="100%">
-          <LineChart
+          <AreaChart
             data={data}
             margin={{ top: 40, right: 40, left: 10, bottom: 20 }}
           >
+            <defs>
+              <linearGradient id="areaGradient" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#C9FF3B" stopOpacity={0.3} />
+                <stop offset="100%" stopColor="#C9FF3B" stopOpacity={0} />
+              </linearGradient>
+            </defs>
             <CartesianGrid
               vertical={true}
               horizontal={true}
@@ -156,30 +162,17 @@ export function Graph() {
               content={<CustomTooltip />}
               cursor={{ stroke: "#525252", strokeDasharray: "3 3" }}
             />
-            <Line
+            <Area
               type="linear"
               dataKey="value"
               stroke="#C9FF3B"
+              dot={true}
               strokeWidth={3}
-              //   dot={false}
+              fill="url(#areaGradient)"
               activeDot={{ r: 6, fill: "#C9FF3B" }}
               isAnimationActive={false}
-              // dot={(props: any) => {
-              //     const { cx, cy, payload } = props
-              //     if (payload.month === currentMonth) {
-              //         return (
-              //             <circle
-              //                 cx={cx}
-              //                 cy={cy}
-              //                 r={4}
-              //                 fill="#C9FF3B"
-              //             />
-              //         )
-              //     }
-              //     return null
-              // }}
             />
-          </LineChart>
+          </AreaChart>
         </ResponsiveContainer>
       </div>
     </div>
