@@ -1,5 +1,5 @@
 import { Line, LineChart, ResponsiveContainer, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts'
-import { ArrowUp, ChevronDown } from 'lucide-react'
+import { ArrowUp, ChevronDown, Info } from 'lucide-react'
 import {
     Select,
     SelectContent,
@@ -22,12 +22,17 @@ const CustomTooltip = ({ active, payload }: any) => {
     if (active && payload && payload.length) {
         return (
             <div className="bg-[#222324] border border-[#525252] rounded-lg p-4">
-                <p className="text-[32px] font-bold text-white">
-                    ${(payload[0].value / 1000).toFixed(2)}k
-                </p>
+                <div className="flex justify-between items-center">
+                    <p className="text-[20px] font-bold text-white text-left mb-2">
+                        ${(payload[0].value / 1000).toFixed(2)}k
+                    </p>
+                    <Info className="h-4 w-4 text-gray-400/60" />
+                </div>
                 <div className="flex items-center gap-2 text-[#999999]">
-                    <ArrowUp className="text-[#C9FF3B] h-4 w-4" />
-                    <span>{payload[0].payload.change}% above target</span>
+                    <div className="border border-[#C9FF3B] rounded-full bg-[#C9FF3B]/10 p-1">
+                        <ArrowUp className="text-[#C9FF3B] size-3" />
+                    </div>
+                    <span className="text-[16px]">{payload[0].payload.change}% above target</span>
                 </div>
             </div>
         )
@@ -92,7 +97,7 @@ export function Graph() {
                             type="linear"
                             dataKey="value"
                             stroke="#C9FF3B"
-                            strokeWidth={2}
+                            strokeWidth={3}
                             //   dot={false}
                             activeDot={{ r: 6, fill: '#C9FF3B' }}
                             isAnimationActive={false}
