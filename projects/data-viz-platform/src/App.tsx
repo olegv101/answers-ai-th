@@ -4,8 +4,39 @@ import { Sidebar } from './components/Sidebar'
 import { DashboardMetrics } from './components/DashboardMetrics'
 import { ScenarioResults } from './components/ScenarioResults'
 import { Header } from './components/Header'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { AuthProvider, useAuth } from './context/AuthContext';
+import { SignIn } from './pages/SignIn';
+import { SignUp } from './pages/SignUp';
+
+function ProtectedRoute({ children }: { children: React.ReactNode }) {
+  const { user } = useAuth();
+  if (!user) return <Navigate to="/signin" />;
+  return children;
+}
 
 function App() {
+  return (
+    <BrowserRouter>
+      <AuthProvider>
+        <Routes>
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route
+            path="/*"
+            element={
+              <ProtectedRoute>
+                <MainLayout />
+              </ProtectedRoute>
+            }
+          />
+        </Routes>
+      </AuthProvider>
+    </BrowserRouter>
+  );
+}
+
+function MainLayout() {
   return (
     <div className="h-screen w-screen flex bg-[#0E0D0D]">
       <Sidebar />
