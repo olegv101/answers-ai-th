@@ -78,11 +78,11 @@ export function DashboardMetrics() {
           </Button>
         </div>
 
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-2 grid-rows-2 gap-4">
           {kpiData.map((card, index) => (
             <div
               key={index}
-              className="rounded-[5px] border border-[#525252] bg-[#222324] p-[39px] flex flex-col"
+              className="h-[261px] rounded-[5px] border border-[#525252] bg-[#222324] p-7 flex flex-col"
             >
               <div className="flex flex-col mb-[78px] text-left">
                 <div className="flex w-full items-center justify-between mb-2">
