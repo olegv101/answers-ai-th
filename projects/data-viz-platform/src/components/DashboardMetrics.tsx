@@ -38,7 +38,7 @@ const kpiData: KPICardData[] = [
 
 export function DashboardMetrics() {
     return (
-        <div className="flex gap-6">
+        <div className="flex gap-4">
             <div className="w-3/5">
                 <h3 className="text-[24px] font-semibold text-white flex justify-start mb-4">Graphs</h3>
                 <Graph />
@@ -56,7 +56,7 @@ export function DashboardMetrics() {
                     {kpiData.map((card, index) => (
                         <div
                             key={index}
-                            className="rounded-[5px] border border-[#525252] bg-[#222324] p-7 flex flex-col"
+                            className="rounded-[5px] border border-[#525252] bg-[#222324] p-[39px] flex flex-col"
                         >
                             <div className="flex flex-col mb-[78px] text-left">
                                 <div className="flex w-full items-center justify-between mb-2">

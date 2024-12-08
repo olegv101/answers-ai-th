@@ -45,8 +45,7 @@ export function Graph() {
 
     return (
         <div className="rounded-lg border border-[#444444] bg-[#222324] p-4">
-            <div className="flex items-center justify-between mb-4">
-                <div></div>
+            <div className="flex items-center justify-end mb-4 mr-10">
                 <Select defaultValue="unsatisfied">
                     <SelectTrigger className="flex flex-row items-center justify-between w-[237px] bg-[#18181A80]/50 border border-[#525252] text-white rounded-[5px] px-4 py-2">
                         <SelectValue>
@@ -62,7 +61,7 @@ export function Graph() {
                 <ResponsiveContainer width="100%" height="100%">
                     <LineChart
                         data={data}
-                        margin={{ top: 80, right: 40, left: 10, bottom: 20 }}
+                        margin={{ top: 40, right: 40, left: 10, bottom: 20 }}
                     >
                         <CartesianGrid
                             vertical={true}
