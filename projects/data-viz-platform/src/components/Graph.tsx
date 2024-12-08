@@ -71,7 +71,7 @@ const CustomTooltip = ({ active, payload }: any) => {
  * - Customized axes and grid
  */
 export function Graph() {
-  const currentMonth = "May"; // example
+  const currentMonth = "May"; // cos i love may
 
   return (
     <div className="rounded-lg border border-[#444444] bg-[#222324] p-4">

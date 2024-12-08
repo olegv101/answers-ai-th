@@ -24,24 +24,24 @@ const kpiData: KPICardData[] = [
   {
     title: "Infrastructure Units",
     value: 421.07,
-    description: "This describes variable two and what the shown data means.",
+    description: "Total cost of charging infrastructure units deployed across all locations.",
     prefix: "€",
   },
   {
     title: "Charging Growth",
     value: 33.07,
-    description: "This describes variable two and what the shown data means.",
+    description: "Month-over-month increase in charging station utilization rate.",
   },
   {
     title: "Localization change",
     value: 21.9,
-    description: "This describes variable two and what the shown data means.",
+    description: "Improvement in local market adaptation and regional coverage expansion.",
     suffix: "%",
   },
   {
     title: "Fleet growth",
     value: 7.03,
-    description: "This describes variable two and what the shown data means.",
+    description: "Percentage increase in total number of vehicles in operational fleet.",
     suffix: "%",
   },
 ];
