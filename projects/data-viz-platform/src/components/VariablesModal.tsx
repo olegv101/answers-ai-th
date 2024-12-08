@@ -55,9 +55,9 @@ export function VariablesModal({ isOpen, onClose }: VariablesModalProps) {
                 <>
                     <motion.div
                         initial={{ opacity: 0 }}
-                        animate={{ opacity: 0.5 }}
+                        animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        className="fixed inset-0 bg-black/50"
+                        className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40"
                         onClick={onClose}
                     />
 
@@ -66,7 +66,7 @@ export function VariablesModal({ isOpen, onClose }: VariablesModalProps) {
                         animate={{ x: 0 }}
                         exit={{ x: '100%' }}
                         transition={{ type: "spring", damping: 20, stiffness: 100 }}
-                        className="fixed right-0 top-0 h-screen w-[691px] bg-[#0E0D0D] border-l border-b border-[#525252] shadow-2xlxl"
+                        className="fixed right-0 top-0 h-screen w-[691px] bg-[#0E0D0D] border-l border-b border-[#525252] shadow-2xl z-50"
                     >
                         <div className="flex flex-col h-full">
                             <div className="flex items-center justify-between p-6 border-[#525252]">
