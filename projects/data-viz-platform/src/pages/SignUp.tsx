@@ -4,26 +4,45 @@ import { useAuth } from "../context/AuthContext";
 import { useNavigate, Link } from "react-router-dom";
 import { Button } from "../components/ui/Button";
 
+/**
+ * SignUp Component
+ * Handles new user registration with email and password
+ * Features:
+ * - Email/password validation
+ * - Password confirmation
+ * - Error handling and display
+ * - Navigation after successful signup
+ */
 export function SignUp() {
+  // Form state management
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
+  
+  // Auth context and navigation hooks
   const { signUp } = useAuth();
   const navigate = useNavigate();
 
+  /**
+   * Handle form submission
+   * Validates passwords match and attempts user registration
+   * @param e - Form submission event
+   */
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError("");
+    setError(""); // Clear any existing errors
 
+    // Validate password confirmation
     if (password !== confirmPassword) {
       setError("Passwords do not match");
       return;
     }
 
     try {
+      // Attempt user registration
       await signUp(email, password);
-      navigate("/");
+      navigate("/"); // Redirect to home on success
     } catch (err: any) {
       setError(err.message || "Failed to create account");
     }
@@ -34,6 +53,7 @@ export function SignUp() {
       <div className="bg-[#161618] p-8 rounded-lg border border-[#525252] w-full max-w-md">
         <h1 className="text-2xl font-bold text-white mb-6">Create Account</h1>
 
+        {/* Error message display */}
         {error && (
           <div className="bg-red-500/10 border border-red-500 text-red-500 p-3 rounded-md mb-4">
             {error}
@@ -41,6 +61,7 @@ export function SignUp() {
         )}
 
         <form onSubmit={handleSubmit} className="space-y-4">
+          {/* Email input field */}
           <div>
             <label className="block text-sm font-medium text-white mb-1">
               Email
@@ -53,6 +74,7 @@ export function SignUp() {
             />
           </div>
 
+          {/* Password input field */}
           <div>
             <label className="block text-sm font-medium text-white mb-1">
               Password
@@ -65,6 +87,7 @@ export function SignUp() {
             />
           </div>
 
+          {/* Password confirmation field */}
           <div>
             <label className="block text-sm font-medium text-white mb-1">
               Confirm Password
@@ -77,6 +100,7 @@ export function SignUp() {
             />
           </div>
 
+          {/* Submit button */}
           <Button
             type="submit"
             variant="standard"
@@ -85,6 +109,7 @@ export function SignUp() {
             Sign Up
           </Button>
 
+          {/* Sign in link */}
           <p className="text-center text-sm text-[#BBBBBB]">
             Already have an account?{" "}
             <Link to="/signin" className="text-[#C9FF3B] hover:underline">

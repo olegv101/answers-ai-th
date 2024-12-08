@@ -1,13 +1,25 @@
 import { Info } from "lucide-react";
 
+/**
+ * Type definition for KPI card data structure
+ * Represents a single performance indicator card with formatting options
+ */
 type KPICardData = {
-  title: string;
-  value: string | number;
-  description: string;
-  prefix?: string;
-  suffix?: string;
+  title: string;      // Card title/metric name
+  value: string | number;  // Metric value
+  description: string;     // Detailed description of the metric
+  prefix?: string;    // Optional prefix (e.g., currency symbol)
+  suffix?: string;    // Optional suffix (e.g., percentage)
 };
 
+/**
+ * Predefined KPI metrics data
+ * Contains static data for four key performance indicators:
+ * - Infrastructure Units (with currency)
+ * - Charging Growth
+ * - Localization change (with percentage)
+ * - Fleet growth (with percentage)
+ */
 const kpiData: KPICardData[] = [
   {
     title: "Infrastructure Units",
@@ -34,6 +46,17 @@ const kpiData: KPICardData[] = [
   },
 ];
 
+/**
+ * KPICards Component
+ * Renders a grid of KPI (Key Performance Indicator) cards
+ * Features:
+ * - 2-column responsive grid layout
+ * - Individual cards with:
+ *   - Title and info icon
+ *   - Description text
+ *   - Formatted value display (with optional prefix/suffix)
+ * - Consistent styling and spacing
+ */
 export function KPICards() {
   return (
     <div className="grid grid-cols-2 gap-4">
