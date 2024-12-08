@@ -3,7 +3,6 @@ import { ArrowUp, ChevronDown, Info } from 'lucide-react'
 import {
     Select,
     SelectContent,
-    SelectItem,
     SelectTrigger,
     SelectValue,
 } from '@radix-ui/react-select'
@@ -41,7 +40,7 @@ const CustomTooltip = ({ active, payload }: any) => {
 }
 
 export function Graph() {
-    const currentMonth = 'May'
+    // const currentMonth = 'May'
 
     return (
         <div className="rounded-lg border border-[#444444] bg-[#222324] p-4">
@@ -100,20 +99,20 @@ export function Graph() {
                             //   dot={false}
                             activeDot={{ r: 6, fill: '#C9FF3B' }}
                             isAnimationActive={false}
-                            dot={(props: any) => {
-                                const { cx, cy, payload } = props
-                                if (payload.month === currentMonth) {
-                                    return (
-                                        <circle
-                                            cx={cx}
-                                            cy={cy}
-                                            r={4}
-                                            fill="#C9FF3B"
-                                        />
-                                    )
-                                }
-                                return null
-                            }}
+                            // dot={(props: any) => {
+                            //     const { cx, cy, payload } = props
+                            //     if (payload.month === currentMonth) {
+                            //         return (
+                            //             <circle
+                            //                 cx={cx}
+                            //                 cy={cy}
+                            //                 r={4}
+                            //                 fill="#C9FF3B"
+                            //             />
+                            //         )
+                            //     }
+                            //     return null
+                            // }}
                         />
                     </LineChart>
                 </ResponsiveContainer>
