@@ -46,6 +46,8 @@ const kpiData: KPICardData[] = [
   },
 ];
 
+console.log(kpiData); // testing
+
 /**
  * KPICards Component
  * Renders a grid of KPI (Key Performance Indicator) cards
