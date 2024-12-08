@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, Search, Sparkles, RotateCcw, Plus, Check } from 'lucide-react'
 import { Button } from './ui/Button'
+import { useState, useRef } from 'react'
 
 interface Variable {
     name: string
@@ -48,6 +49,23 @@ interface VariablesModalProps {
 }
 
 export function VariablesModal({ isOpen, onClose }: VariablesModalProps) {
+    const [showTooltip, setShowTooltip] = useState(false);
+    const timerRef = useRef<ReturnType<typeof setTimeout>>();
+
+    const handleMouseEnter = (variableName: string) => {
+        if (variableName === 'Co2 Distribution') {
+            timerRef.current = setTimeout(() => {
+                setShowTooltip(true);
+            }, 1500);
+        }
+    };
+
+    const handleMouseLeave = () => {
+        if (timerRef.current) {
+            clearTimeout(timerRef.current);
+        }
+        setShowTooltip(false);
+    };
 
     return (
         <AnimatePresence>
@@ -66,13 +84,13 @@ export function VariablesModal({ isOpen, onClose }: VariablesModalProps) {
                         animate={{ x: 0 }}
                         exit={{ x: '100%' }}
                         transition={{ type: "spring", damping: 20, stiffness: 100 }}
-                        className="fixed right-0 top-0 h-screen w-[691px] bg-[#0E0D0D] border-l border-b border-[#525252] shadow-2xl z-50"
+                        className="fixed right-0 top-0 h-screen w-[691px] bg-[#0E0D0D] border-l border-b border-[#525252] shadow-2xl z-50 px-4"
                     >
                         <div className="flex flex-col h-full">
                             <div className="flex items-center justify-between p-6 border-[#525252]">
                                 <h2 className="text-[24px] font-semibold text-white">Edit Variables</h2>
                                 <Button variant="icon" onClick={onClose}>
-                                    <X className="h-5 w-5" />
+                                    <X className="h-5 w-5 text-white" />
                                 </Button>
                             </div>
 
@@ -96,15 +114,19 @@ export function VariablesModal({ isOpen, onClose }: VariablesModalProps) {
                                     </Button>
                                 </div>
 
-                                <div className="space-y-6 max-h-[calc(100vh-280px)] overflow-y-auto pr-4">
+                                <div className="space-y-6 max-h-[calc(100vh-280px)] overflow-y-auto pr-4 relative border border-[#525252] bg-[#161618] rounded-[5px] px-6 py-10">
                                     {categories.map((category) => (
                                         <div key={category.name} className="space-y-3">
-                                            <h3 className="text-[16px] text-sm font-medium px-2 flex justify-start">{category.name}</h3>
+                                            <h3 className="text-[16px] text-sm font-medium px-2 flex justify-start">
+                                                {category.name}
+                                            </h3>
                                             <div className="flex flex-wrap gap-2 p-3 rounded-xl">
                                                 {category.variables.map((variable) => (
                                                     <Button
                                                         key={variable.name}
                                                         variant="standard"
+                                                        onMouseEnter={() => handleMouseEnter(variable.name)}
+                                                        onMouseLeave={handleMouseLeave}
                                                         className={`${
                                                             variable.active
                                                                 ? 'bg-[#282E16] border border-[#C9FF3B] text-[#C9FF3B] hover:shadow-[0_0_15px_rgba(201,255,59,0.3)] transition-shadow duration-100'
@@ -122,6 +144,22 @@ export function VariablesModal({ isOpen, onClose }: VariablesModalProps) {
                                             </div>
                                         </div>
                                     ))}
+                                    
+                                    <AnimatePresence>
+                                        {showTooltip && (
+                                            <motion.div
+                                                initial={{ opacity: 0, y: -10 }}
+                                                animate={{ opacity: 1, y: 0 }}
+                                                exit={{ opacity: 0, y: -10 }}
+                                                className="absolute bottom-0 left-0 right-0 bg-[#1A1A1A] border border-[#525252] rounded-lg p-4 mx-4 mb-4 shadow-lg"
+                                            >
+                                                <h4 className="text-[#C9FF3B] font-medium mb-2">CO2 Distribution Details</h4>
+                                                <p className="text-sm text-[#EDEDED]">
+                                                    This variable represents the distribution pattern of CO2 emissions across different operational zones and time periods.
+                                                </p>
+                                            </motion.div>
+                                        )}
+                                    </AnimatePresence>
                                 </div>
                             </div>
                         </div>
