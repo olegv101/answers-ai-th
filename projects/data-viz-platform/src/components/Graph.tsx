@@ -69,6 +69,19 @@ export function Graph() {
                             stroke="#333333"
                             strokeOpacity={0.5}
                         />
+                        <CartesianGrid
+                            horizontal={false}
+                            vertical={true}
+                            verticalCoordinatesGenerator={(props) => {
+                                const { width } = props;
+                                const count = 16; // number of vertical lines
+                                const gap = width / count;
+                                return Array.from({ length: count + 1 }, (_, i) => i * gap);
+                            }}
+                            stroke="#525252"
+                            strokeOpacity={0.5}
+                            strokeWidth={1}
+                        />
                         <XAxis
                             dataKey="month"
                             stroke="#ffffff"
@@ -80,7 +93,7 @@ export function Graph() {
                                     <text
                                         x={0}
                                         y={0}
-                                        dy={10}
+                                        dy={20}
                                         textAnchor="middle"
                                         fill="#ffffff"
                                         fontSize={12}
@@ -91,7 +104,7 @@ export function Graph() {
                                         <text
                                             x={0}
                                             y={0}
-                                            dy={25}
+                                            dy={35}
                                             textAnchor="middle"
                                             fill="#999999"
                                             fontSize={10}
