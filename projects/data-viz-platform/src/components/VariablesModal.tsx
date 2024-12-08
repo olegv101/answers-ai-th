@@ -166,7 +166,7 @@ export function VariablesModal({ isOpen, onClose }: VariablesModalProps) {
                                                         ease: "easeIn"
                                                     }
                                                 }}
-                                                className="w-full bg-[#222324] border-t border-[#525252] rounded-br-lg rounded-bl-lg p-4 mb-4 shadow-lg"
+                                                className="w-full bg-[#222324] border-t border-[#525252] rounded-br-lg rounded-bl-lg p-8 mb-4 shadow-lg"
                                             >
                                                 <h4 className="flex flex-row items-center text-white text-[18px] font-medium mb-2 -pl-4">CO2 Distribution Details <Info className="ml-2 h-4 w-4" /></h4>
                                                 <p className="text-[15px] text-[#BBBBBB] max-w-xl text-left">
