@@ -1,13 +1,13 @@
-import './App.css'
-import { Navigation } from './components/Navigation'
-import { Sidebar } from './components/Sidebar'
-import { DashboardMetrics } from './components/DashboardMetrics'
-import { ScenarioResults } from './components/ScenarioResults'
-import { Header } from './components/Header'
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { AuthProvider, useAuth } from './context/AuthContext';
-import { SignIn } from './pages/SignIn';
-import { SignUp } from './pages/SignUp';
+import "./App.css";
+import { Navigation } from "./components/Navigation";
+import { Sidebar } from "./components/Sidebar";
+import { DashboardMetrics } from "./components/DashboardMetrics";
+import { ScenarioResults } from "./components/ScenarioResults";
+import { Header } from "./components/Header";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { AuthProvider, useAuth } from "./context/AuthContext";
+import { SignIn } from "./pages/SignIn";
+import { SignUp } from "./pages/SignUp";
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { user } = useAuth();
@@ -58,7 +58,7 @@ function MainLayout() {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

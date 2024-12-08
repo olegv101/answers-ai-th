@@ -1,31 +1,31 @@
-import React from 'react';
-import { useState } from 'react';
-import { useAuth } from '../context/AuthContext';
-import { useNavigate, Link } from 'react-router-dom';
-import { Button } from '../components/ui/Button';
+import React from "react";
+import { useState } from "react";
+import { useAuth } from "../context/AuthContext";
+import { useNavigate, Link } from "react-router-dom";
+import { Button } from "../components/ui/Button";
 
 export function SignUp() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [error, setError] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState("");
   const { signUp } = useAuth();
   const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError('');
+    setError("");
 
     if (password !== confirmPassword) {
-      setError('Passwords do not match');
+      setError("Passwords do not match");
       return;
     }
 
     try {
       await signUp(email, password);
-      navigate('/');
+      navigate("/");
     } catch (err: any) {
-      setError(err.message || 'Failed to create account');
+      setError(err.message || "Failed to create account");
     }
   };
 
@@ -33,7 +33,7 @@ export function SignUp() {
     <div className="min-h-screen flex items-center justify-center bg-[#0E0D0D]">
       <div className="bg-[#161618] p-8 rounded-lg border border-[#525252] w-full max-w-md">
         <h1 className="text-2xl font-bold text-white mb-6">Create Account</h1>
-        
+
         {error && (
           <div className="bg-red-500/10 border border-red-500 text-red-500 p-3 rounded-md mb-4">
             {error}
@@ -86,7 +86,7 @@ export function SignUp() {
           </Button>
 
           <p className="text-center text-sm text-[#BBBBBB]">
-            Already have an account?{' '}
+            Already have an account?{" "}
             <Link to="/signin" className="text-[#C9FF3B] hover:underline">
               Sign In
             </Link>
@@ -95,4 +95,4 @@ export function SignUp() {
       </div>
     </div>
   );
-} 
+}

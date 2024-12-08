@@ -1,21 +1,15 @@
-import { Search } from 'lucide-react'
-import { Button } from './ui/Button'
+import { Search } from "lucide-react";
+import { Button } from "./ui/Button";
 
 export function Navigation() {
   return (
     <nav className="flex w-full items-center justify-between px-4">
       <div className="flex space-x-4">
-        <Button variant="standard">
-          Charging Stations
-        </Button>
-        <Button>
-          Fleet Sizing
-        </Button>
-        <Button>
-          Parking
-        </Button>
+        <Button variant="standard">Charging Stations</Button>
+        <Button>Fleet Sizing</Button>
+        <Button>Parking</Button>
       </div>
-      
+
       <div className="relative w-[237px]">
         <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-[#EDEDED]/80" />
         <input
@@ -25,5 +19,5 @@ export function Navigation() {
         />
       </div>
     </nav>
-  )
-} 
+  );
+}

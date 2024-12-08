@@ -1,13 +1,13 @@
-import React from 'react';
-import { useState } from 'react';
-import { useAuth } from '../context/AuthContext';
-import { useNavigate, Link } from 'react-router-dom';
-import { Button } from '../components/ui/Button';
+import React from "react";
+import { useState } from "react";
+import { useAuth } from "../context/AuthContext";
+import { useNavigate, Link } from "react-router-dom";
+import { Button } from "../components/ui/Button";
 
 export function SignIn() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const { signIn } = useAuth();
   const navigate = useNavigate();
 
@@ -15,9 +15,9 @@ export function SignIn() {
     e.preventDefault();
     try {
       await signIn(email, password);
-      navigate('/');
+      navigate("/");
     } catch (err) {
-      setError('Invalid credentials');
+      setError("Invalid credentials");
     }
   };
 
@@ -65,7 +65,7 @@ export function SignIn() {
           </Button>
 
           <p className="text-center text-sm text-[#BBBBBB] mt-4">
-            Don't have an account?{' '}
+            Don't have an account?{" "}
             <Link to="/signup" className="text-[#C9FF3B] hover:underline">
               Sign Up
             </Link>
@@ -74,4 +74,4 @@ export function SignIn() {
       </div>
     </div>
   );
-} 
+}
