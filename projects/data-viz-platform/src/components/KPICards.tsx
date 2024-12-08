@@ -40,7 +40,7 @@ export function KPICards() {
       {kpiData.map((card, index) => (
         <div 
           key={index}
-          className="rounded-[5px] border border-[#525252] bg-[#222324] p-8 flex flex-col h-[214px]"
+          className="rounded-[5px] border border-[#525252] bg-[#222324] p-8 flex flex-col"
         >
           <div className="flex flex-col mb-[78px] text-left">
             <div className="flex w-full items-center justify-between mb-2">
