@@ -2,46 +2,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { X, Search, Sparkles, RotateCcw, Plus, Check, Info, ChevronDown } from 'lucide-react'
 import { Button } from './ui/Button'
 import { useState, useRef } from 'react'
-
-interface Variable {
-    name: string
-    active?: boolean
-}
-
-interface VariableCategory {
-    name: string
-    variables: Variable[]
-}
-
-const categories: VariableCategory[] = [
-    {
-        name: 'Variable category 1',
-        variables: [
-            { name: 'Carbon 1' },
-            { name: 'Co2 Distribution', active: true },
-            { name: 'Fleet sizing', active: true },
-        ],
-    },
-    {
-        name: 'Variable Category 2',
-        variables: [
-            { name: 'Parking Rate' },
-            { name: 'Border Rate', active: true },
-            { name: 'Request rate', active: true },
-            { name: 'Variable 1' },
-            { name: 'Variable 2' },
-            { name: 'Variable 3', active: true },
-        ],
-    },
-    {
-        name: 'Variable Category 3',
-        variables: [
-            { name: 'Variable 1' },
-            { name: 'Variable 2', active: true },
-            { name: 'Variable 3', active: true },
-        ],
-    },
-]
+import { useVariableStore } from '../lib/useVariablesStore'
 
 interface VariablesModalProps {
     isOpen: boolean
@@ -49,6 +10,9 @@ interface VariablesModalProps {
 }
 
 export function VariablesModal({ isOpen, onClose }: VariablesModalProps) {
+    const categories = useVariableStore((state) => state.categories)
+    const toggleVariableActive = useVariableStore((state) => state.toggleVariableActive)
+    
     const [showTooltip, setShowTooltip] = useState(false);
     const timerRef = useRef<ReturnType<typeof setTimeout>>();
 
@@ -116,8 +80,8 @@ export function VariablesModal({ isOpen, onClose }: VariablesModalProps) {
 
                                 <div className="space-y-6 max-h-[calc(100vh-280px)] overflow-y-auto relative border border-[#525252] bg-[#161618] rounded-[5px] px-0 py-0">
                                     {categories.map((category) => (
-                                        <div className="mx-6 mt-8">
-                                            <div key={category.name} className="space-y-3 mb-10">
+                                        <div key={category.name} className="mx-6 mt-8">
+                                            <div className="space-y-3 mb-10">
                                                 <h3 className="text-[16px] text-sm font-medium px-2 flex justify-start">
                                                     {category.name}
                                                 </h3>
@@ -128,10 +92,12 @@ export function VariablesModal({ isOpen, onClose }: VariablesModalProps) {
                                                             variant="standard"
                                                             onMouseEnter={() => handleMouseEnter(variable.name)}
                                                             onMouseLeave={handleMouseLeave}
-                                                            className={`${variable.active
-                                                                ? 'bg-[#282E16] border border-[#C9FF3B] text-[#C9FF3B] hover:shadow-[0_0_15px_rgba(201,255,59,0.3)] transition-shadow duration-100'
-                                                                : 'flex flex-row items-center px-2 hover:shadow-[0_0_15px_rgba(255,255,255,0.15)] transition-shadow duration-100'
-                                                                } flex flex-row items-center px-4 rounded-full`}
+                                                            onClick={() => toggleVariableActive(category.name, variable.name)}
+                                                            className={`${
+                                                                variable.active
+                                                                    ? 'bg-[#282E16] border border-[#C9FF3B] text-[#C9FF3B] hover:shadow-[0_0_15px_rgba(201,255,59,0.3)] transition-shadow duration-100'
+                                                                    : 'flex flex-row items-center px-2 hover:shadow-[0_0_15px_rgba(255,255,255,0.15)] transition-shadow duration-100'
+                                                            } flex flex-row items-center px-4 rounded-full`}
                                                         >
                                                             {variable.name}
                                                             {variable.active ? (
@@ -142,7 +108,6 @@ export function VariablesModal({ isOpen, onClose }: VariablesModalProps) {
                                                         </Button>
                                                     ))}
                                                 </div>
-
                                             </div>
                                         </div>
                                     ))}
@@ -170,7 +135,7 @@ export function VariablesModal({ isOpen, onClose }: VariablesModalProps) {
                                             >
                                                 <h4 className="flex flex-row items-center text-white text-[18px] font-medium mb-2 -pl-4">CO2 Distribution Details <Info className="ml-2 h-4 w-4" /></h4>
                                                 <p className="text-[15px] text-[#BBBBBB] max-w-xl text-left">
-                                                    This variable represents the distribution pattern of CO2 emissions across different operational zones and time periods.
+                                                But what truly sets Switch apart is its versatility. It can be used as a scooter, a bike, or even a skateboard, making it suitable for people of all ages. Whether you're a student, a professional, or a senior citizen, Switch adapts to your needs and lifestyle.
                                                 </p>
                                             </motion.div>
                                         )}
