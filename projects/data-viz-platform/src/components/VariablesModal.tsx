@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion'
-import { X, Search, Sparkles, RotateCcw, Plus, Check, Info } from 'lucide-react'
+import { X, Search, Sparkles, RotateCcw, Plus, Check, Info, ChevronDown } from 'lucide-react'
 import { Button } from './ui/Button'
 import { useState, useRef } from 'react'
 
@@ -150,7 +150,7 @@ export function VariablesModal({ isOpen, onClose }: VariablesModalProps) {
                                         {showTooltip && (
                                             <motion.div
                                                 initial={{ opacity: 0, y: -20 }}
-                                                animate={{ 
+                                                animate={{
                                                     opacity: 1,
                                                     y: 0,
                                                     transition: {
@@ -158,7 +158,7 @@ export function VariablesModal({ isOpen, onClose }: VariablesModalProps) {
                                                         ease: "easeOut"
                                                     }
                                                 }}
-                                                exit={{ 
+                                                exit={{
                                                     opacity: 0,
                                                     y: -10,
                                                     transition: {
@@ -176,7 +176,18 @@ export function VariablesModal({ isOpen, onClose }: VariablesModalProps) {
                                         )}
                                     </AnimatePresence>
                                 </div>
-
+                            </div>
+                            <div className="flex flex-row justify-between bg-[#222324] border border-[#525252] rounded-[4px] p-4 mx-4 mb-4 items-center">
+                                <h1 className="text-[20px] text-[#C8E972] font-normal">Primary Variables</h1>
+                                <div className="px-3 py-1 border border-[#C9FF3B] rounded-full">
+                                    <ChevronDown className="text-[#C9FF3B] h-5 w-5" />
+                                </div>
+                            </div>
+                            <div className="flex flex-row justify-between bg-[#222324] border border-[#525252] rounded-[4px] p-4 mx-4 items-center">
+                                <h1 className="text-[20px] text-[#C8E972] font-normal">Secondary Variables</h1>
+                                <div className="px-3 py-1 border border-[#C9FF3B] rounded-full">
+                                    <ChevronDown className="text-[#C9FF3B] h-5 w-5" />
+                                </div>
                             </div>
                         </div>
                     </motion.div>
