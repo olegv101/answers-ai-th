@@ -1,6 +1,14 @@
 import { Search } from "lucide-react";
 import { Button } from "./ui/Button";
 
+/**
+ * Navigation Component
+ * Top navigation bar with section links and search
+ * Features:
+ * - Section navigation buttons
+ * - Active section highlighting
+ * - Search input with icon
+ */
 export function Navigation() {
   return (
     <nav className="flex w-full items-center justify-between px-4">

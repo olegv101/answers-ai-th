@@ -13,9 +13,20 @@ import { Button } from "./ui/Button";
 import { useState, useRef } from "react";
 import { useVariableStore } from "../lib/useVariablesStore";
 
+/**
+ * VariablesModal Component
+ * A slide-over modal for managing variables in the application.
+ * Features:
+ * - Variable category organization
+ * - Search functionality
+ * - Variable toggling
+ * - Animated tooltips
+ * - Autofill and rerun actions
+ */
+
 interface VariablesModalProps {
-  isOpen: boolean;
-  onClose: () => void;
+  isOpen: boolean;  // Controls modal visibility
+  onClose: () => void;  // Handler for closing the modal
 }
 
 export function VariablesModal({ isOpen, onClose }: VariablesModalProps) {
@@ -27,6 +38,11 @@ export function VariablesModal({ isOpen, onClose }: VariablesModalProps) {
   const [showTooltip, setShowTooltip] = useState(false);
   const timerRef = useRef<ReturnType<typeof setTimeout>>();
 
+  /**
+   * Handles tooltip display for specific variables
+   * Shows detailed information after a delay
+   * @param variableName - Name of the variable to check for tooltip
+   */
   const handleMouseEnter = (variableName: string) => {
     if (variableName === "Co2 Distribution") {
       timerRef.current = setTimeout(() => {
@@ -35,6 +51,9 @@ export function VariablesModal({ isOpen, onClose }: VariablesModalProps) {
     }
   };
 
+  /**
+   * Cleans up tooltip timer and hides tooltip
+   */
   const handleMouseLeave = () => {
     if (timerRef.current) {
       clearTimeout(timerRef.current);

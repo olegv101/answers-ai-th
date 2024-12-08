@@ -2,6 +2,10 @@ import { Graph } from "./Graph";
 import { Info, Plus } from "lucide-react";
 import { Button } from "./ui/Button";
 
+/**
+ * Type definition for KPI card data
+ * Represents individual metric displays with optional prefix/suffix
+ */
 type KPICardData = {
   title: string;
   value: string | number;
@@ -10,6 +14,10 @@ type KPICardData = {
   suffix?: string;
 };
 
+/**
+ * Predefined KPI metrics data
+ * Contains various performance indicators with their respective values and formatting
+ */
 const kpiData: KPICardData[] = [
   {
     title: "Infrastructure Units",
@@ -36,6 +44,17 @@ const kpiData: KPICardData[] = [
   },
 ];
 
+/**
+ * DashboardMetrics Component
+ * Main dashboard view combining graphs and KPI metrics
+ * Layout:
+ * - Left side (60%): Graph visualization
+ * - Right side (40%): KPI cards grid
+ * Features:
+ * - Responsive layout
+ * - Interactive graph
+ * - KPI cards with tooltips
+ */
 export function DashboardMetrics() {
   return (
     <div className="flex gap-4">

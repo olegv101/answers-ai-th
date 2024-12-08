@@ -2,11 +2,19 @@ import { ChevronDown, Ellipsis, Sparkles } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 
+/**
+ * Type definition for scenario result items
+ * Represents either profit or demand-based scenario outcomes
+ */
 type ScenarioResult = {
   description: string;
   type: "profit" | "demand";
 };
 
+/**
+ * Predefined scenario results data
+ * Contains best configurations for profit and demand scenarios
+ */
 const scenarioResults: ScenarioResult[] = [
   {
     type: "profit",
@@ -20,6 +28,10 @@ const scenarioResults: ScenarioResult[] = [
   },
 ];
 
+/**
+ * Animation variants for the container
+ * Controls the stagger effect of child elements
+ */
 const container = {
   hidden: { opacity: 0 },
   show: {
@@ -38,6 +50,10 @@ const container = {
   },
 };
 
+/**
+ * Animation variants for individual items
+ * Defines entry, display, and exit animations
+ */
 const item = {
   hidden: {
     opacity: 0,
@@ -66,6 +82,14 @@ const item = {
   },
 };
 
+/**
+ * ScenarioResults Component
+ * Displays collapsible section showing best scenario results
+ * Features:
+ * - Expandable/collapsible content
+ * - Animated transitions
+ * - Individual result cards with actions
+ */
 export function ScenarioResults() {
   const [isExpanded, setIsExpanded] = useState(true);
 

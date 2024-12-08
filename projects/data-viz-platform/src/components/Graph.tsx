@@ -15,6 +15,10 @@ import {
   SelectValue,
 } from "@radix-ui/react-select";
 
+/**
+ * Mock data for the line chart
+ * Represents monthly values and change percentages
+ */
 const data = [
   { month: "Apr", value: 35000, change: 2.3 },
   { month: "May", value: 45000, change: 4.6 },
@@ -25,6 +29,14 @@ const data = [
   { month: "Oct", value: 65000, change: 4.9 },
 ];
 
+/**
+ * CustomTooltip Component
+ * Renders a custom tooltip for the line chart
+ * Features:
+ * - Formatted value display
+ * - Change percentage indicator
+ * - Visual indicators for positive/negative changes
+ */
 const CustomTooltip = ({ active, payload }: any) => {
   if (active && payload && payload.length) {
     return (
@@ -49,6 +61,15 @@ const CustomTooltip = ({ active, payload }: any) => {
   return null;
 };
 
+/**
+ * Graph Component
+ * Main chart visualization component
+ * Features:
+ * - Interactive line chart
+ * - Custom tooltips
+ * - Responsive container
+ * - Customized axes and grid
+ */
 export function Graph() {
   const currentMonth = "May"; // example
 
