@@ -29,7 +29,6 @@ A mock data visualization platform built with React, TypeScript, and Vite, featu
 
 ### Key Interactions
 
-- 🔄 Real-time graph updates
 - 💡 Contextual tooltips
 - ✨ Variable toggling system
 - 🔐 Secure authentication flow
