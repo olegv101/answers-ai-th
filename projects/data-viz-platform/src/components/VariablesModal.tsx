@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion'
-import { X, Search, Sparkles, RotateCcw, Plus, Check } from 'lucide-react'
+import { X, Search, Sparkles, RotateCcw, Plus, Check, Info } from 'lucide-react'
 import { Button } from './ui/Button'
 import { useState, useRef } from 'react'
 
@@ -94,13 +94,13 @@ export function VariablesModal({ isOpen, onClose }: VariablesModalProps) {
                                 </Button>
                             </div>
 
-                            <div className="p-4 space-y-4">
-                                <div className="flex gap-2">
+                            <div className="p-4 ">
+                                <div className="flex gap-2 mb-4">
                                     <div className="relative w-full">
                                         <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-[#EDEDED]/80" />
                                         <input
                                             type="search"
-                                            className="w-full rounded-[5px] border border-[#5A5A5A] bg-[#2C2E334D]/30 pl-8 pr-3 py-1.5 text-sm text-[#EDEDED] placeholder-[#EDEDED]/80 focus:border-white/40 focus:outline-none"
+                                            className="w-full rounded-[5px] border border-[#5A5A5A] bg-[#2C2E334D]/30 pl-8 pr-3 py-2 text-sm text-[#EDEDED] placeholder-[#EDEDED]/80 focus:border-white/40 focus:outline-none"
                                             placeholder="Search"
                                         />
                                     </div>
@@ -114,53 +114,69 @@ export function VariablesModal({ isOpen, onClose }: VariablesModalProps) {
                                     </Button>
                                 </div>
 
-                                <div className="space-y-6 max-h-[calc(100vh-280px)] overflow-y-auto pr-4 relative border border-[#525252] bg-[#161618] rounded-[5px] px-6 py-10">
+                                <div className="space-y-6 max-h-[calc(100vh-280px)] overflow-y-auto relative border border-[#525252] bg-[#161618] rounded-[5px] px-0 py-0">
                                     {categories.map((category) => (
-                                        <div key={category.name} className="space-y-3">
-                                            <h3 className="text-[16px] text-sm font-medium px-2 flex justify-start">
-                                                {category.name}
-                                            </h3>
-                                            <div className="flex flex-wrap gap-2 p-3 rounded-xl">
-                                                {category.variables.map((variable) => (
-                                                    <Button
-                                                        key={variable.name}
-                                                        variant="standard"
-                                                        onMouseEnter={() => handleMouseEnter(variable.name)}
-                                                        onMouseLeave={handleMouseLeave}
-                                                        className={`${
-                                                            variable.active
+                                        <div className="mx-6 mt-8">
+                                            <div key={category.name} className="space-y-3 mb-10">
+                                                <h3 className="text-[16px] text-sm font-medium px-2 flex justify-start">
+                                                    {category.name}
+                                                </h3>
+                                                <div className="flex flex-wrap gap-2 p-3 rounded-xl">
+                                                    {category.variables.map((variable) => (
+                                                        <Button
+                                                            key={variable.name}
+                                                            variant="standard"
+                                                            onMouseEnter={() => handleMouseEnter(variable.name)}
+                                                            onMouseLeave={handleMouseLeave}
+                                                            className={`${variable.active
                                                                 ? 'bg-[#282E16] border border-[#C9FF3B] text-[#C9FF3B] hover:shadow-[0_0_15px_rgba(201,255,59,0.3)] transition-shadow duration-100'
                                                                 : 'flex flex-row items-center px-2 hover:shadow-[0_0_15px_rgba(255,255,255,0.15)] transition-shadow duration-100'
-                                                        } flex flex-row items-center px-4 rounded-full`}
-                                                    >
-                                                        {variable.name}
-                                                        {variable.active ? (
-                                                            <Check className="ml-2 h-4 w-4" />
-                                                        ) : (
-                                                            <Plus className="ml-2 h-4 w-4" />
-                                                        )}
-                                                    </Button>
-                                                ))}
+                                                                } flex flex-row items-center px-4 rounded-full`}
+                                                        >
+                                                            {variable.name}
+                                                            {variable.active ? (
+                                                                <Check className="ml-2 h-4 w-4" />
+                                                            ) : (
+                                                                <Plus className="ml-2 h-4 w-4" />
+                                                            )}
+                                                        </Button>
+                                                    ))}
+                                                </div>
+
                                             </div>
                                         </div>
                                     ))}
-                                    
                                     <AnimatePresence>
                                         {showTooltip && (
                                             <motion.div
-                                                initial={{ opacity: 0, y: -10 }}
-                                                animate={{ opacity: 1, y: 0 }}
-                                                exit={{ opacity: 0, y: -10 }}
-                                                className="absolute bottom-0 left-0 right-0 bg-[#1A1A1A] border border-[#525252] rounded-lg p-4 mx-4 mb-4 shadow-lg"
+                                                initial={{ opacity: 0, y: -20 }}
+                                                animate={{ 
+                                                    opacity: 1,
+                                                    y: 0,
+                                                    transition: {
+                                                        duration: 0.2,
+                                                        ease: "easeOut"
+                                                    }
+                                                }}
+                                                exit={{ 
+                                                    opacity: 0,
+                                                    y: -10,
+                                                    transition: {
+                                                        duration: 0.15,
+                                                        ease: "easeIn"
+                                                    }
+                                                }}
+                                                className="w-full bg-[#222324] border-t border-[#525252] rounded-br-lg rounded-bl-lg p-4 mb-4 shadow-lg"
                                             >
-                                                <h4 className="text-[#C9FF3B] font-medium mb-2">CO2 Distribution Details</h4>
-                                                <p className="text-sm text-[#EDEDED]">
+                                                <h4 className="flex flex-row items-center text-white text-[18px] font-medium mb-2 -pl-4">CO2 Distribution Details <Info className="ml-2 h-4 w-4" /></h4>
+                                                <p className="text-[15px] text-[#BBBBBB] max-w-xl text-left">
                                                     This variable represents the distribution pattern of CO2 emissions across different operational zones and time periods.
                                                 </p>
                                             </motion.div>
                                         )}
                                     </AnimatePresence>
                                 </div>
+
                             </div>
                         </div>
                     </motion.div>
