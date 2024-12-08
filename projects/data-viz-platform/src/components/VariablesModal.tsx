@@ -105,10 +105,11 @@ export function VariablesModal({ isOpen, onClose }: VariablesModalProps) {
                                                     <Button
                                                         key={variable.name}
                                                         variant="standard"
-                                                        className={`${variable.active
-                                                                ? 'bg-[#282E16] border border-[#C9FF3B] text-[#C9FF3B] flex flex-row items-center px-4 rounded-full'
-                                                                : 'flex flex-row items-center px-2'
-                                                            }`}
+                                                        className={`${
+                                                            variable.active
+                                                                ? 'bg-[#282E16] border border-[#C9FF3B] text-[#C9FF3B] hover:shadow-[0_0_15px_rgba(201,255,59,0.3)] transition-shadow duration-100'
+                                                                : 'flex flex-row items-center px-2 hover:shadow-[0_0_15px_rgba(255,255,255,0.15)] transition-shadow duration-100'
+                                                        } flex flex-row items-center px-4 rounded-full`}
                                                     >
                                                         {variable.name}
                                                         {variable.active ? (
