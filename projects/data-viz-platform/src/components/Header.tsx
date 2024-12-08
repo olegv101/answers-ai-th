@@ -3,6 +3,13 @@ import { Button } from "./ui/Button";
 import { useState } from "react";
 import { VariablesModal } from "./VariablesModal";
 
+/**
+ * Header Component
+ * Displays the main header of the application with:
+ * - Title section with icon
+ * - Action buttons for history, variables, and sharing
+ * - Modal for editing variables
+ */
 export function Header() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
