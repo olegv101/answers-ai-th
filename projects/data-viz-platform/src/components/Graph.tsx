@@ -40,7 +40,7 @@ const CustomTooltip = ({ active, payload }: any) => {
 }
 
 export function Graph() {
-    // const currentMonth = 'May'
+    const currentMonth = 'May' // example
 
     return (
         <div className="rounded-lg border border-[#444444] bg-[#222324] p-4">
@@ -75,8 +75,32 @@ export function Graph() {
                             fontSize={12}
                             tickLine={false}
                             axisLine={false}
-                            tick={{ fill: '#ffffff', fontSize: 12 }}
-                            dy={10}
+                            tick={({ x, y, payload }) => (
+                                <g transform={`translate(${x},${y})`}>
+                                    <text
+                                        x={0}
+                                        y={0}
+                                        dy={10}
+                                        textAnchor="middle"
+                                        fill="#ffffff"
+                                        fontSize={12}
+                                    >
+                                        {payload.value}
+                                    </text>
+                                    {payload.value === currentMonth && (
+                                        <text
+                                            x={0}
+                                            y={0}
+                                            dy={25}
+                                            textAnchor="middle"
+                                            fill="#999999"
+                                            fontSize={10}
+                                        >
+                                            Current
+                                        </text>
+                                    )}
+                                </g>
+                            )}
                         />
                         <YAxis
                             stroke="#ffffff"
